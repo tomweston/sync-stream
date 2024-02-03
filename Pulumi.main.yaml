@@ -1,0 +1,5 @@
+config:
+  aws:region: eu-west-2
+  sync-stream:table: sync-stream
+  sync-stream:function: sync-stream
+  sync-stream:bucket: sync-stream

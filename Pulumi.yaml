@@ -1,0 +1,7 @@
+name: sync-stream
+runtime: go
+description: Automatically indexes files uploaded to a cloud storage bucket, storing their details in a database
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: ""
