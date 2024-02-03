@@ -20,13 +20,11 @@ jobs:
 
       - name: Dependencies
         run: |
-          cd lambda
           npm install
         working-directory: ./lambda
 
       - name: Test
         run: |
-          cd lambda
           npm test
         working-directory: ./lambda
 
