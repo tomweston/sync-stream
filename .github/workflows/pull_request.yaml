@@ -45,10 +45,14 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-west-2
 
+      - name: List directory contents
+        run: ls -alh
+        working-directory: ./
+      
       - name: Initialize Pulumi stack
         run: |
           pulumi login
-          pulumi stack select ${{ github.repository }}/main
+          pulumi stack select main
         env:
           PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
         working-directory: ./
