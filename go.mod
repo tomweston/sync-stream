@@ -1,6 +1,6 @@
 module sync-stream
 
-go 1.21.6
+go 1.23
 
 require (
 	github.com/pulumi/pulumi-aws/sdk/v6 v6.19.0
