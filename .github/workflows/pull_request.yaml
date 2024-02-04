@@ -71,6 +71,9 @@ jobs:
         env:
           PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
 
+      - name: Debug
+        run: ls -alh ./lambda
+
       - name: Pulumi up Auto-Apply
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
