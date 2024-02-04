@@ -51,12 +51,14 @@ jobs:
           pulumi stack select ${{ github.repository }}/core
         env:
           PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+        working-directory: ./
 
       - name: Pulumi preview
         run: |
           pulumi preview
         env:
           PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+        working-directory: ./
 
       - name: Pulumi up (Auto-Apply on Merge)
         if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
@@ -64,3 +66,4 @@ jobs:
           pulumi up --yes
         env:
           PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+        working-directory: ./
