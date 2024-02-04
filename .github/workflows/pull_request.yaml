@@ -19,16 +19,22 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '16' 
+          node-version: '16'
 
-      - name: Dependencies
-        run: |
-          npm install
+      - name: Cache node_modules
+        uses: actions/cache@v2
+        with:
+          path: ./lambda/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('./lambda/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      
+      - name: Install dependencies using npm ci
+        run: npm ci
         working-directory: ./lambda
 
       - name: Test
-        run: |
-          npm test
+        run: npm test
         working-directory: ./lambda
 
   Pulumi:
@@ -38,7 +44,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-  
+
       - name: Set up Go
         uses: actions/setup-go@v2
         with:
