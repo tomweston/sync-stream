@@ -21,14 +21,6 @@ jobs:
         with:
           node-version: '16'
 
-      - name: Cache node_modules
-        uses: actions/cache@v2
-        with:
-          path: ./lambda/node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('./lambda/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      
       - name: Install dependencies using npm ci
         run: npm ci
         working-directory: ./lambda
