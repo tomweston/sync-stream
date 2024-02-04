@@ -48,7 +48,7 @@ jobs:
       - name: Initialize Pulumi stack
         run: |
           pulumi login
-          pulumi stack select ${{ github.repository }}/core
+          pulumi stack select ${{ github.repository }}/main
         env:
           PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
         working-directory: ./
